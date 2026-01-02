@@ -12,7 +12,6 @@ class LedControlWidget:
 
         self.is_button_on: bool=False
 
-
         ui.label(text='LED Controls').classes('text-md font-medium')
         with ui.row().classes('items-center gap-4'):
             self.button_on_off = ButtonOnOff()
