@@ -91,8 +91,12 @@ class LedWidget:
         if self.is_button_on:
             self.button_on_off.text = 'OFF'
             self.button_on_off.props('push color=red outline')
+
+            self.is_button_on = False
         else:
             self.button_on_off.text = 'ON'
             self.button_on_off.props('push color=green')
+
+            self.is_button_on = True
 
         return
