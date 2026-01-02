@@ -3,14 +3,14 @@ import queue
 
 from nicegui import ui
 
-# from nicegui_examples.widgets.led import LedWidget
+from nicegui_examples.widgets.led_control import LedControlWidget
 from nicegui_examples.widgets.connection import ConnectionWidget
 
 
 class MainWidget:
     def __init__(self):
 
-        self.led: LedWidget = None
+        self.led: LedControlWidget = None
 
         self.log_queue: 'queue.Queue[str]' = queue.Queue()
         self.log_area: ui.textarea = None
@@ -22,7 +22,7 @@ class MainWidget:
 
             ui.separator()
 
-            self.led = LedWidget(parent=self)
+            self.led = LedControlWidget(parent=self)
 
             ui.separator()
 
@@ -65,38 +65,5 @@ class MainWidget:
     def clear_log(self) -> None:
 
         self.log_area = ''
-
-        return
-
-
-
-class LedWidget:
-    def __init__(self, parent: 'MainWidget') -> None:
-        
-        self.parent = weakref.proxy(parent)
-
-        self.is_button_on: bool=False
-
-
-        ui.label(text='LED Controls').classes('text-md font-medium')
-        with ui.row().classes('items-center gap-4'):
-            self.button_on_off = ui.button(
-                text='OFF',
-                on_click=self.on_button_toggle
-            ).props('push color=grey outline')
-
-
-    def on_button_toggle(self) -> None:
-
-        if self.is_button_on:
-            self.button_on_off.text = 'OFF'
-            self.button_on_off.props('push color=red outline')
-
-            self.is_button_on = False
-        else:
-            self.button_on_off.text = 'ON'
-            self.button_on_off.props('push color=green')
-
-            self.is_button_on = True
 
         return
