@@ -24,9 +24,9 @@ class MainWidget:
 
             self.led = LedControlWidget(parent=self)
 
-            ui.separator()
+            # ui.separator()
 
-            self.connection = ConnectionWidget(parent=self)
+            # self.connection = ConnectionWidget(parent=self)
 
             ui.separator()
 
@@ -35,12 +35,12 @@ class MainWidget:
                 placeholder='Logs appear here...',
                 value=''
                 ).props('readonly').classes('w-full').style('height: 220px; overflow:auto')
-            
+
             self.log_button = ui.button(
                 text='Clear Log',
                 on_click=self.clear_log,
                 ).props('push color=primary')
-            
+
         self.log_timer = ui.timer(
             interval=0.2,
             callback=self.flush_logs,
